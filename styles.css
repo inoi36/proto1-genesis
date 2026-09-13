@@ -1,0 +1,833 @@
+/* ==========================================================================
+   Proto1: Genesis — Centered Monolith Showcase Stylesheet
+   Exact Format & Theme of websec-probe-ten.vercel.app with Cat Mascot
+   ========================================================================== */
+
+:root {
+    /* Dark Theme (Default) */
+    --bg-page: #000000;
+    --bg-card: #09090b;
+    --bg-card-subtle: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.12);
+    --border-strong: rgba(255, 255, 255, 0.25);
+
+    --text-main: #ffffff;
+    --text-muted: #a1a1aa;
+    --text-dim: #71717a;
+
+    --blue-thanks: #60a5fa;
+    --green-dot: #22c55e;
+    --cyan-dot: #38bdf8;
+    --yellow-dot: #eab308;
+    --red-dot: #f43f5e;
+
+    --btn-primary-bg: #ffffff;
+    --btn-primary-text: #000000;
+
+    --font-hand: 'Gaegu', cursive, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html.light {
+    /* Light Theme */
+    --bg-page: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-card-subtle: rgba(0, 0, 0, 0.03);
+    --border: rgba(0, 0, 0, 0.12);
+    --border-strong: rgba(0, 0, 0, 0.25);
+
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --text-dim: #94a3b8;
+
+    --blue-thanks: #2563eb;
+    --green-dot: #16a34a;
+    --cyan-dot: #0284c7;
+    --yellow-dot: #d97706;
+    --red-dot: #e11d48;
+
+    --btn-primary-bg: #0f172a;
+    --btn-primary-text: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.font-mono { font-family: var(--font-mono); }
+.-mt { margin-top: -12px; }
+
+/* ==========================================================================
+   Top Header Navigation with Cat Mascot
+   ========================================================================== */
+.top-nav {
+    height: 58px;
+    background: var(--bg-page);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    z-index: 100;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.mascot-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: default;
+    user-select: none;
+}
+
+.nav-cat-img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: var(--bg-card-subtle);
+    border: 1px solid var(--border);
+    padding: 2px;
+    transition: transform 0.2s ease;
+}
+
+.mascot-brand:hover .nav-cat-img {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+.nav-brand-text {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-main);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.time-coord-badge {
+    background: var(--bg-card-subtle);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.coord-sep { color: var(--text-dim); }
+
+.icon-round-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg-card-subtle);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.icon-round-btn:hover {
+    background: var(--bg-card);
+    border-color: var(--border-strong);
+}
+
+/* ==========================================================================
+   Main Viewport Frame (Centered Monolith)
+   ========================================================================== */
+.viewport-canvas {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px 110px;
+}
+
+.monolith-frame {
+    width: 100%;
+    max-width: 860px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 36px 40px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.monolith-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.file-path {
+    font-size: 0.85rem;
+    color: var(--text-main);
+    border-left: 5px solid var(--text-main);
+    padding-left: 12px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.gaegu-title {
+    font-family: var(--font-hand);
+    line-height: 1;
+    margin: 8px 0 10px;
+}
+
+.gaegu-title .block-line {
+    font-size: 3.8rem;
+    display: block;
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+.gaegu-desc {
+    font-family: var(--font-hand);
+    font-size: 1.35rem;
+    color: var(--text-muted);
+    line-height: 1.35;
+    max-width: 680px;
+    margin-bottom: 20px;
+}
+
+/* Hatched Stripe Divider */
+.hatched-line-bar {
+    height: 18px;
+    background-image: repeating-linear-gradient(135deg, transparent, transparent 6px, currentColor 8px, currentColor 6px);
+    color: var(--text-main);
+    opacity: 0.18;
+    margin-bottom: 24px;
+}
+
+/* Clean Terminal Output Box */
+.clean-terminal-card {
+    background: #000000;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.term-card-header {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: #a1a1aa;
+}
+
+.term-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.term-dots span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #3f3f46;
+}
+
+.term-status-badge {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-weight: 700;
+}
+
+.term-card-body {
+    padding: 16px 18px;
+    font-size: 0.8rem;
+    line-height: 1.65;
+    background: #000000;
+}
+
+.term-output-code {
+    font-family: var(--font-mono);
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.c-prompt { color: #8b9bb4; }
+.c-white { color: #ffffff; }
+.c-blue { color: #60a5fa; }
+.c-green { color: #22c55e; }
+.c-cyan { color: #38bdf8; }
+.c-yellow { color: #eab308; }
+.c-badge {
+    background: #22c55e;
+    color: #000000;
+    padding: 0 5px;
+    border-radius: 2px;
+    font-weight: 700;
+}
+
+/* Action Buttons */
+.monolith-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.monolith-btn-download {
+    flex: 1.2;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    transition: opacity 0.15s, transform 0.15s;
+}
+
+.monolith-btn-download:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.btn-left-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.monolith-btn-copy {
+    flex: 1;
+    background: var(--bg-card-subtle);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.monolith-btn-copy:hover {
+    background: var(--bg-card);
+    border-color: var(--border-strong);
+}
+
+.copy-pill {
+    font-size: 0.68rem;
+    background: rgba(120, 120, 120, 0.2);
+    color: inherit;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+/* Features Pill Strip */
+.features-pill-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+}
+
+.feat-pill {
+    background: var(--bg-card-subtle);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 9999px;
+}
+
+/* ==========================================================================
+   Flag Verification Arena
+   ========================================================================== */
+.flag-arena-box {
+    background: var(--bg-card-subtle);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.gaegu-subtitle {
+    font-family: var(--font-hand);
+    font-size: 1.8rem;
+    color: var(--text-main);
+    margin-bottom: 2px;
+}
+
+.arena-desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+}
+
+.flag-inputs-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.flag-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.flag-group label {
+    font-size: 0.8rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.flag-group label span {
+    color: var(--text-dim);
+    font-size: 0.72rem;
+}
+
+.input-wrap input {
+    width: 100%;
+    background: #000000;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    transition: border-color 0.15s;
+}
+
+.input-wrap input:focus {
+    outline: none;
+    border-color: var(--border-strong);
+}
+
+.flag-hint {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+}
+
+.submit-flags-btn {
+    width: 100%;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.submit-flags-btn:hover {
+    opacity: 0.9;
+}
+
+.status-feedback {
+    margin-top: 14px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+}
+
+.status-feedback.error {
+    background: rgba(244, 63, 94, 0.1);
+    border: 1px solid var(--red-dot);
+    color: #f87171;
+}
+
+.status-feedback.info {
+    background: rgba(234, 179, 8, 0.1);
+    border: 1px solid var(--yellow-dot);
+    color: #fbbf24;
+}
+
+/* ==========================================================================
+   Hidden Collapsible Walkthrough ("Chipake Rakha Hai")
+   ========================================================================== */
+.hidden-walkthrough-box {
+    background: var(--bg-card-subtle);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.walkthrough-summary {
+    padding: 16px 20px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.walkthrough-summary::-webkit-details-marker { display: none; }
+
+.summary-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lock-tag {
+    background: rgba(244, 63, 94, 0.2);
+    color: #f87171;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-weight: 700;
+}
+
+.toggle-indicator {
+    color: var(--text-dim);
+    font-size: 0.75rem;
+}
+
+.walkthrough-accordion[open] .toggle-indicator {
+    color: var(--text-muted);
+}
+
+.walkthrough-inner {
+    padding: 10px 20px 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.wt-block {
+    background: #000000;
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    border-radius: 6px;
+}
+
+.wt-block-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+.wt-code {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 10px 12px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    color: #22c55e;
+    margin: 8px 0;
+    white-space: pre-wrap;
+}
+
+.wt-desc {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.flag-line {
+    background: rgba(234, 179, 8, 0.1);
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.76rem;
+    color: #fbbf24;
+    margin-top: 8px;
+}
+
+.flag-line code {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   Victory Modal with Cat Image (Without Background)
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+    padding: 20px;
+}
+
+.victory-modal-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 480px;
+    padding: 36px 30px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-close-x {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-close-x:hover { color: #ffffff; }
+
+.cat-mascot-wrapper {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 12px;
+}
+
+.modal-cat-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: catWiggle 2s infinite ease-in-out;
+}
+
+@keyframes catWiggle {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-5deg) scale(1.05); }
+    75% { transform: rotate(5deg) scale(1.05); }
+}
+
+.victory-tag {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid var(--green-dot);
+    color: #22c55e;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.gaegu-modal-title {
+    font-family: var(--font-hand);
+    font-size: 2.8rem;
+    color: var(--text-main);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.gaegu-modal-subtitle {
+    font-family: var(--font-hand);
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+}
+
+.flags-solved-summary {
+    background: #000000;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.solved-pill {
+    font-size: 0.8rem;
+    color: var(--text-main);
+}
+
+.c-green { color: #22c55e; font-weight: 700; }
+
+.fireworks-btn {
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.15s;
+}
+
+.fireworks-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.04);
+}
+
+.hidden { display: none !important; }
+
+/* ==========================================================================
+   Bottom Footer with Floating Dock (Exact luvvv.me style)
+   ========================================================================== */
+.luvv-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    padding: 10px 24px;
+    z-index: 90;
+}
+
+html.light .luvv-footer {
+    background: rgba(248, 250, 252, 0.85);
+}
+
+.footer-bar-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left-credit {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+}
+
+.thanks-link {
+    color: var(--blue-thanks);
+    text-decoration: none;
+}
+
+.thanks-link:hover { text-decoration: underline; }
+
+.center-floating-dock {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    padding: 4px 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.dock-circle-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s;
+}
+
+.dock-circle-btn:hover, .dock-circle-btn.active {
+    background: var(--bg-card-subtle);
+    color: var(--text-main);
+}
+
+.footer-right-visitor {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+}
+
+.footer-right-visitor strong {
+    color: var(--text-main);
+}
+
+/* Toast */
+.toast-pill {
+    position: fixed;
+    bottom: 65px;
+    right: 24px;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+    pointer-events: none;
+    z-index: 2000;
+}
+
+.toast-pill.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .viewport-canvas { padding: 16px 12px 100px; }
+    .monolith-frame { padding: 24px 18px; border-radius: 10px; }
+    .gaegu-title .block-line { font-size: 3rem; }
+    .gaegu-desc { font-size: 1.15rem; }
+    .monolith-actions { flex-direction: column; gap: 10px; }
+    .flag-inputs-container { grid-template-columns: 1fr; }
+    .footer-left-credit { display: none; }
+    .luvv-footer { padding: 8px 14px; }
+}

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proto1: Genesis — Vulnerable Target Machine & CTF Lab</title>
+    <meta name="description" content="Downloadable beginner vulnerable machine for VMware and VirtualBox. Practice web security enumeration, input validation, and Linux privilege escalation.">
+    <!-- Google Fonts: Gaegu (handwriting), Inter, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+        <!-- Left Side: Cat Mascot Branding -->
+        <div class="nav-left">
+            <div class="mascot-brand" title="Proto1 Genesis Mascot">
+                <img src="cat.png" alt="Proto1 Cat Mascot" class="nav-cat-img">
+                <span class="nav-brand-text font-mono">proto1-genesis</span>
+            </div>
+        </div>
+
+        <!-- Right Side: Clock & Dark/Light Theme Toggle -->
+        <div class="nav-right">
+            <div class="time-coord-badge font-mono">
+                <span class="coord-txt">θ = 0.52rad · 30°</span>
+                <span class="coord-sep">|</span>
+                <span id="live-ist-clock">15:45:00 IST</span>
+            </div>
+            <button class="icon-round-btn" id="theme-btn" title="Toggle Theme (Dark / Light)" aria-label="Toggle Theme">
+                <svg id="theme-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Viewport Canvas (Centered Monolith Frame) -->
+    <main class="viewport-canvas">
+        <div class="monolith-frame">
+            
+            <!-- Header Text with Gaegu Handwriting Font -->
+            <div class="monolith-header">
+                <div class="file-path font-mono">proto1-genesis / README.md</div>
+                <h1 class="gaegu-title">
+                    <span class="block-line">Heyy!</span>
+                    <span class="block-line -mt">This is Proto1: Genesis</span>
+                </h1>
+                <p class="gaegu-desc">
+                    A beginner-friendly vulnerable target machine for VMware and VirtualBox. Practice your network reconnaissance, web security enumeration, and Linux privilege escalation skills offline!
+                </p>
+            </div>
+
+            <!-- Diagonal Repeating Hatched Line Divider -->
+            <div class="hatched-line-bar"></div>
+
+            <!-- Clean Terminal Centerpiece Box (No Spoilers, Generic Scan) -->
+            <div class="clean-terminal-card">
+                <div class="term-card-header font-mono">
+                    <div class="term-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <span class="term-title-text">kali@kali: ~/labs — nmap -sV -sC -p- &lt;TARGET_IP&gt;</span>
+                    <span class="term-status-badge">v1.0 ONLINE</span>
+                </div>
+                <div class="term-card-body font-mono">
+<pre class="term-output-code"><span class="c-prompt">(venv) (kali@kali)-[~/labs]$</span> <span class="c-white">nmap -sV -sC -T4 &lt;TARGET_IP&gt;</span>
+<span class="c-blue">[INFO]</span> Starting Nmap 7.94 scan on target host...
+<span class="c-green">[+]</span> Host State     : <span class="c-white">Host is up (0.00042s latency - DHCP Assigned)</span>
+<span class="c-green">[+]</span> 22/tcp open    : <span class="c-cyan">ssh   OpenSSH 8.9p1 Ubuntu 3ubuntu0.10</span>
+<span class="c-green">[+]</span> 80/tcp open    : <span class="c-cyan">http  Apache httpd 2.4.52 ((Ubuntu))</span>
+<span class="c-prompt">-------------------------------------------------------------</span>
+<span class="c-yellow">[*] MISSION BRIEF:</span>
+<span class="c-white"> 1. Perform network enumeration to identify the active target IP.</span>
+<span class="c-white"> 2. Analyze the web surface for information leakage &amp; input handling flaws.</span>
+<span class="c-white"> 3. Obtain initial low-privileged access and capture the User Flag.</span>
+<span class="c-white"> 4. Audit local permissions &amp; elevate privileges to capture the Root Flag.</span>
+<span class="c-green">[+]</span> Challenge Scope: <span class="c-badge">2 FLAGS (USER + ROOT)</span></pre>
+                </div>
+            </div>
+
+            <!-- Action Buttons Row (Clean & Generic) -->
+            <div class="monolith-actions">
+                <a href="https://mega.nz/file/n7wyRb4L#VhLyn2CRGKjE7-AGAUI2l1WOr6rF2K_zafAPCEa-zdw" target="_blank" rel="noopener noreferrer" class="monolith-btn-download font-mono" id="download-btn">
+                    <div class="btn-left-content">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        <span>Download Machine Package (.ZIP)</span>
+                    </div>
+                    <span class="copy-pill">3.29 GB</span>
+                </a>
+
+                <div class="monolith-btn-copy font-mono" id="copy-btn" onclick="copyReconCommand()">
+                    <span class="copy-cmd-text">$ sudo arp-scan -l</span>
+                    <span class="copy-pill" id="copy-badge">COPY</span>
+                </div>
+            </div>
+
+            <!-- Features Pill Strip (Clean & Non-spoiler) -->
+            <div class="features-pill-strip font-mono">
+                <span class="feat-pill">🌐 Web Application Security</span>
+                <span class="feat-pill">🔍 Directory &amp; User Recon</span>
+                <span class="feat-pill">🛡️ Sudoers Misconfiguration</span>
+                <span class="feat-pill">📦 VMware / VirtualBox</span>
+                <span class="feat-pill">🚩 2 Flags (User + Root)</span>
+            </div>
+
+            <!-- Diagonal Repeating Hatched Line Divider -->
+            <div class="hatched-line-bar" style="margin-top: 24px;"></div>
+
+            <!-- Flag Verification Arena Section -->
+            <div class="flag-arena-box">
+                <div class="arena-header">
+                    <h3 class="gaegu-subtitle">🚩 Submit Flags &amp; Claim Victory</h3>
+                    <p class="font-mono arena-desc">Enter the captured user and root flags below to verify your solution!</p>
+                </div>
+
+                <form id="flag-form" class="flag-form font-mono">
+                    <div class="flag-inputs-container">
+                        <!-- User Flag -->
+                        <div class="flag-group">
+                            <label for="user-flag">User Flag <span>(/home/.../user.txt)</span></label>
+                            <div class="input-wrap">
+                                <input type="text" id="user-flag" placeholder="HMV{...}" required autocomplete="off">
+                            </div>
+                            <span class="flag-hint" id="user-hint">Capture from standard user account directory</span>
+                        </div>
+
+                        <!-- Root Flag -->
+                        <div class="flag-group">
+                            <label for="root-flag">Root Flag <span>(/root/root.txt)</span></label>
+                            <div class="input-wrap">
+                                <input type="text" id="root-flag" placeholder="HMV{...}" required autocomplete="off">
+                            </div>
+                            <span class="flag-hint" id="root-hint">Capture after escalating to root context</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-flags-btn font-mono" id="submit-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg>
+                        <span>Verify &amp; Pwn Target</span>
+                    </button>
+                </form>
+
+                <div id="status-feedback" class="status-feedback font-mono hidden"></div>
+            </div>
+
+            <!-- Diagonal Repeating Hatched Line Divider -->
+            <div class="hatched-line-bar" style="margin-top: 24px;"></div>
+
+            <!-- Hidden Collapsible Walkthrough (100% Pure Professional English) -->
+            <div class="hidden-walkthrough-box">
+                <details class="walkthrough-accordion">
+                    <summary class="walkthrough-summary font-mono">
+                        <div class="summary-title-wrap">
+                            <span class="lock-tag">🔒 SPOILER</span>
+                            <span>Guided Methodology &amp; Security Walkthrough</span>
+                        </div>
+                        <span class="toggle-indicator">[CLICK TO EXPAND]</span>
+                    </summary>
+
+                    <div class="walkthrough-inner font-mono">
+                        <!-- Phase 1 -->
+                        <div class="wt-block">
+                            <div class="wt-block-title font-mono"><span class="c-blue">[PHASE 1]</span> Network Discovery &amp; Port Mapping</div>
+                            <p class="wt-desc">Power on the target VM in VMware Workstation or VirtualBox (Host-Only or NAT network mode). From your Kali Linux attack machine, identify the assigned IP address:</p>
+                            <pre class="wt-code"># Discover live hosts on your local subnet:
+sudo arp-scan -l
+# Or using netdiscover:
+sudo netdiscover -r 192.168.x.0/24
+
+# Perform comprehensive port and service detection:
+nmap -sV -sC -T4 &lt;TARGET_IP&gt;</pre>
+                            <p class="wt-desc">The scan confirms two active services: <strong>Port 22 (OpenSSH)</strong> and <strong>Port 80 (Apache HTTP Server)</strong>.</p>
+                        </div>
+
+                        <!-- Phase 2 -->
+                        <div class="wt-block">
+                            <div class="wt-block-title font-mono"><span class="c-green">[PHASE 2]</span> Web Surface Enumeration &amp; User Discovery</div>
+                            <p class="wt-desc">1. Perform directory fuzzing on the HTTP service to locate hidden files and directories:</p>
+                            <pre class="wt-code">gobuster dir -u http://&lt;TARGET_IP&gt;/ -w /usr/share/wordlists/dirb/common.txt</pre>
+                            <p class="wt-desc">The scan reveals a sensitive text note left by developers containing temporary credentials.</p>
+                            
+                            <p class="wt-desc">2. Review the Linux user database to identify interactive system users with valid login shells:</p>
+                            <pre class="wt-code"># Filter human users with valid login shells:
+grep "/bin/bash" /etc/passwd</pre>
+                            <p class="wt-desc">This confirms the standard user account active on the target machine.</p>
+                        </div>
+
+                        <!-- Phase 3 -->
+                        <div class="wt-block">
+                            <div class="wt-block-title font-mono"><span class="c-cyan">[PHASE 3]</span> Input Validation Review &amp; User Flag</div>
+                            <p class="wt-desc">Audit the diagnostic web portal for input sanitization flaws. When user-supplied parameters are passed directly to a system shell execution function, command chaining operators (such as <code>;</code> or <code>&amp;&amp;</code>) can be evaluated to execute secondary commands.</p>
+                            <p class="wt-desc">Inspect the standard user's home directory to capture the initial milestone flag:</p>
+                            <div class="flag-line">🚩 <strong>Objective 1:</strong> Read the <code>user.txt</code> file located in the user's home directory.</div>
+                        </div>
+
+                        <!-- Phase 4 -->
+                        <div class="wt-block">
+                            <div class="wt-block-title font-mono"><span class="c-yellow">[PHASE 4]</span> Privilege Boundary Auditing (Root Escalation)</div>
+                            <p class="wt-desc">1. Establish an SSH session using the retrieved standard user credentials:</p>
+                            <pre class="wt-code">ssh &lt;DISCOVERED_USER&gt;@&lt;TARGET_IP&gt;</pre>
+                            <p class="wt-desc">2. Audit the user's elevated sudo privileges:</p>
+                            <pre class="wt-code">sudo -l</pre>
+                            <p class="wt-desc">3. Identify allowed binaries configured with <code>NOPASSWD</code>. Consult standard security references (such as <strong>GTFOBins</strong>) to evaluate the binary's execution parameters and elevate context.</p>
+                            <div class="flag-line">🚩 <strong>Objective 2:</strong> Elevate privileges to root and retrieve the final validation flag from <code>/root/root.txt</code>.</div>
+                        </div>
+
+                        <!-- Phase 5 -->
+                        <div class="wt-block">
+                            <div class="wt-block-title font-mono"><span class="c-blue">[DEFENSE]</span> Remediation &amp; Defensive Hardening</div>
+                            <p class="wt-desc">
+                            • <strong>Strict Input Validation:</strong> Enforce strict parameter filtering and input escaping on all shell execution wrappers.<br>
+                            • <strong>Secure File Permissions:</strong> Remove sensitive credentials, test scripts, and debug notes from publicly accessible web roots.<br>
+                            • <strong>Principle of Least Privilege:</strong> Avoid assigning <code>NOPASSWD</code> sudo access to interactive binaries capable of spawning subshells.
+                            </p>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Bottom Footer with Floating Dock -->
+    <footer class="luvv-footer">
+        <div class="footer-bar-inner">
+            <div class="footer-left-credit font-mono">
+                // Built for Kali Linux &amp; Penetration Testers; <a href="#" class="thanks-link">thanks();</a>
+            </div>
+
+            <!-- Floating Central Dock -->
+            <div class="center-floating-dock">
+                <button class="dock-circle-btn active" title="Lab Overview" onclick="showToast('Proto1: Genesis Overview')">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg>
+                </button>
+                <button class="dock-circle-btn" title="Web Diagnostic Audit" onclick="showToast('Port 80: Web Input Testing')">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                </button>
+                <button class="dock-circle-btn" title="Directory & User Recon" onclick="showToast('Directory & User Discovery')">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </button>
+                <button class="dock-circle-btn" title="Privilege Boundary Audit" onclick="showToast('Linux Sudoers Audit')">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                </button>
+                <a href="https://mega.nz/file/n7wyRb4L#VhLyn2CRGKjE7-AGAUI2l1WOr6rF2K_zafAPCEa-zdw" target="_blank" rel="noopener noreferrer" class="dock-circle-btn" title="Download .ZIP">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                </a>
+            </div>
+
+            <div class="footer-right-visitor font-mono">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                <span>You are the <strong>915<sup>th</sup></strong> hacker</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Victory Modal with the EXACT Cat Mascot Image -->
+    <div id="victory-modal" class="modal-overlay hidden">
+        <div class="victory-modal-card">
+            <button class="modal-close-x" id="close-modal-btn" aria-label="Close Modal">&times;</button>
+            
+            <div class="cat-mascot-wrapper">
+                <img src="cat.png" alt="Celebratory Cat Meme" class="modal-cat-img" id="cat-meme-img">
+            </div>
+
+            <div class="victory-tag font-mono">🏆 TARGET PWNED 100%</div>
+            <h2 class="gaegu-modal-title">🎉 CONGRATULATIONS!</h2>
+            <p class="gaegu-modal-subtitle">You have successfully cracked, exploited, and captured all flags on <strong>Proto1: Genesis</strong>!</p>
+
+            <div class="flags-solved-summary font-mono">
+                <div class="solved-pill">
+                    <span class="c-green">✓</span> User Flag Validated (+50 XP)
+                </div>
+                <div class="solved-pill">
+                    <span class="c-green">✓</span> Root Flag Validated (+50 XP)
+                </div>
+            </div>
+
+            <button class="fireworks-btn font-mono" id="fireworks-btn" onclick="fireMoreConfetti()">
+                ✨ More Confetti!
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-pill font-mono">Copied to clipboard! 📋</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
