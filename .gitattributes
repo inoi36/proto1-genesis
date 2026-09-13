@@ -2,10 +2,11 @@
 # GitHub Linguist Configuration
 # Hides frontend CSS/HTML from language statistics and highlights Cybersecurity/Scripting
 # ------------------------------------------------------------------------------
-*.css linguist-detectable=false
-*.html linguist-detectable=false
-*.js linguist-detectable=false
-styles.css linguist-detectable=false
-script.js linguist-detectable=false
-*.py linguist-detectable=true
-*.sh linguist-detectable=true
+  
+  *.css linguist-detectable=false
+  *.html linguist-detectable=false
+  *.js linguist-detectable=false
+  styles.css linguist-detectable=false
+  script.js linguist-detectable=false
+  *.py linguist-detectable=true
+  *.sh linguist-detectable=true
