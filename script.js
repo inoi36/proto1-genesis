@@ -40,10 +40,8 @@ if (savedTheme === "light") {
 function updateThemeIcon(isLight) {
     if (!themeIcon) return;
     if (isLight) {
-        // Sun Icon
         themeIcon.innerHTML = `<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>`;
     } else {
-        // Moon Icon
         themeIcon.innerHTML = `<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>`;
     }
 }
@@ -95,7 +93,7 @@ function copyReconCommand() {
     });
 }
 
-// 5. Victory Sound Synthesizer (Web Audio API)
+// 5. Victory Sound Synthesizer
 function playVictoryAudio() {
     try {
         const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -115,7 +113,7 @@ function playVictoryAudio() {
             osc.stop(ctx.currentTime + idx * 0.1 + 0.4);
         });
     } catch (e) {
-        console.log("Audio requires interaction");
+        console.log("Audio requires user interaction");
     }
 }
 
@@ -146,7 +144,7 @@ function fireMoreConfetti() {
     playVictoryAudio();
 }
 
-// 7. Flag Submission Logic
+// 7. Flag Submission Logic (Always Resets on Page Refresh)
 document.addEventListener("DOMContentLoaded", () => {
     const flagForm = document.getElementById("flag-form");
     const userInput = document.getElementById("user-flag");
@@ -158,16 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const victoryModal = document.getElementById("victory-modal");
     const closeModalBtn = document.getElementById("close-modal-btn");
 
-    // Check if previously solved
-    if (localStorage.getItem("proto1_pwned") === "true") {
-        userInput.value = VALID_FLAGS.user;
-        rootInput.value = VALID_FLAGS.root;
-        userHint.textContent = "✓ Verified (User Flag Solved)";
-        userHint.style.color = "#22c55e";
-        rootHint.textContent = "✓ Verified (Root Flag Solved)";
-        rootHint.style.color = "#22c55e";
-    }
-
     if (flagForm) {
         flagForm.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -175,15 +163,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const userVal = userInput.value.trim();
             const rootVal = rootInput.value.trim();
 
-            const isUserOk = userVal === VALID_FLAGS.user;
-            const isRootOk = rootVal === VALID_FLAGS.root;
+            const isUserOk = userVal.toLowerCase() === VALID_FLAGS.user.toLowerCase() || userVal.toLowerCase() === VALID_FLAGS.user.replace("HVM", "HMV").toLowerCase();
+            const isRootOk = rootVal.toLowerCase() === VALID_FLAGS.root.toLowerCase() || rootVal.toLowerCase() === VALID_FLAGS.root.replace("HVM", "HMV").toLowerCase();
 
             feedbackBox.classList.remove("hidden", "error", "info");
 
             // Both Correct -> SHOW CAT MEME & CELEBRATION!
             if (isUserOk && isRootOk) {
-                localStorage.setItem("proto1_pwned", "true");
-
                 userHint.textContent = "✓ Correct User Flag (+50 XP)";
                 userHint.style.color = "#22c55e";
                 rootHint.textContent = "✓ Correct Root Flag (+50 XP)";
@@ -231,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Modal close
+    // Modal Close Handlers
     function closeModal() {
         if (victoryModal) victoryModal.classList.add("hidden");
     }
