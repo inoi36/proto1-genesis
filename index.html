@@ -123,20 +123,20 @@
                     <div class="flag-inputs-container">
                         <!-- User Flag -->
                         <div class="flag-group">
-                            <label for="user-flag">User Flag <span>(/home/.../user.txt)</span></label>
+                            <label for="user-flag">User Flag <span>(Initial Foothold)</span></label>
                             <div class="input-wrap">
                                 <input type="text" id="user-flag" placeholder="HMV{...}" required autocomplete="off">
                             </div>
-                            <span class="flag-hint" id="user-hint">Capture from standard user account directory</span>
+                            <span class="flag-hint" id="user-hint">Submit low-privileged user flag</span>
                         </div>
 
                         <!-- Root Flag -->
                         <div class="flag-group">
-                            <label for="root-flag">Root Flag <span>(/root/root.txt)</span></label>
+                            <label for="root-flag">Root Flag <span>(System Privilege)</span></label>
                             <div class="input-wrap">
                                 <input type="text" id="root-flag" placeholder="HMV{...}" required autocomplete="off">
                             </div>
-                            <span class="flag-hint" id="root-hint">Capture after escalating to root context</span>
+                            <span class="flag-hint" id="root-hint">Submit elevated root flag</span>
                         </div>
                     </div>
 
