@@ -3,8 +3,8 @@
 // ==============================================================================
 
 const VALID_FLAGS = {
-    user: "HMV{us3r_f00th0ld_c0mm4nd_1nj3ct10n_941a}",
-    root: "HMV{r00t_gtf0b1ns_pr1v3sc_m4st3r_882f}"
+    user: "HVM{us3r_f00th0ld_c0mm4nd_1nj3ct10n_941a}",
+    root: "HVM{r00t_gtf0b1ns_pr1v3sc_m4st3r_882f}"
 };
 
 // 1. Live IST Clock
